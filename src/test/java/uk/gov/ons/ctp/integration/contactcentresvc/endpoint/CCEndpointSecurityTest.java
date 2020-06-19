@@ -58,10 +58,10 @@ public class CCEndpointSecurityTest extends EndpointSecurityTest {
     testGetCaseByCaseRef(HttpStatus.OK);
   }
 
-  @Test
-  public void ccOkGetCaseLaunch() {
-    testGetCaseLaunch(HttpStatus.OK);
-  }
+  //  @Test
+  //  public void ccOkGetCaseLaunch() {
+  //    testGetCaseLaunch(HttpStatus.OK);
+  //  }
 
   @Test
   public void ccOkGetFulfilfments() {

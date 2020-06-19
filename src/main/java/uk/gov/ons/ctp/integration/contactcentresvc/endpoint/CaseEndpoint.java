@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 import uk.gov.ons.ctp.common.domain.UniquePropertyReferenceNumber;
 import uk.gov.ons.ctp.common.endpoint.CTPEndpoint;
 import uk.gov.ons.ctp.common.error.CTPException;
@@ -147,7 +148,7 @@ public class CaseEndpoint implements CTPEndpoint {
    * @throws CTPException something went wrong
    */
   @RequestMapping(value = "/{caseId}/launch", method = RequestMethod.GET)
-  public ResponseEntity<String> getLaunchURLForCaseId(
+  public RedirectView getLaunchURLForCaseId(
       @PathVariable(value = "caseId") final UUID caseId, @Valid LaunchRequestDTO requestParamsDTO)
       throws CTPException {
     // INFO because we need to log agent-id
@@ -156,8 +157,7 @@ public class CaseEndpoint implements CTPEndpoint {
         .info("Entering GET getLaunchURLForCaseId");
 
     String launchURL = caseService.getLaunchURLForCaseId(caseId, requestParamsDTO);
-
-    return ResponseEntity.ok(launchURL);
+    return new RedirectView(launchURL);
   }
 
   /**
