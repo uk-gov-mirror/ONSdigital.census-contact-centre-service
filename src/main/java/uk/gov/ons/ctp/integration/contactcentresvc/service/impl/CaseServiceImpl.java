@@ -735,6 +735,9 @@ public class CaseServiceImpl implements CaseService {
       contact.setTitle(encrypt(refusalRequest.getTitle()));
       contact.setForename(encrypt(refusalRequest.getForename()));
       contact.setSurname(encrypt(refusalRequest.getSurname()));
+      log.info("PMB title: " + contact.getTitle());
+      log.info("PMB forename: " + contact.getForename());
+      log.info("PMB surname: " + contact.getSurname());
     }
     return contact;
   }
